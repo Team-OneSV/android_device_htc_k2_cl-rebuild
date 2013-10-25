@@ -31,6 +31,8 @@
 TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
 # Kernel
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01408000
+TARGET_KERNEL_SOURCE := kernel/htc/k2
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
 
 # Bluetooth
