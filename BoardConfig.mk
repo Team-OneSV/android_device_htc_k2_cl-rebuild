@@ -31,9 +31,12 @@
 TARGET_BOOTLOADER_BOARD_NAME := k2_cl
 
 # Kernel
+BOARD_KERNEL_BASE := 0x80400000
+BOARD_KERNEL_PAGESIZE := 2048
+BOARD_KERNEL_CMDLINE := console=ttyHSL0,115200,n8 androidboot.hardware=qcom
 BOARD_MKBOOTIMG_ARGS := --ramdisk_offset 0x01408000
-TARGET_KERNEL_SOURCE := kernel/htc/k2
 TARGET_KERNEL_CONFIG := k2_cl_defconfig
+TARGET_KERNEL_SOURCE := kernel/htc/k2
 
 # Bluetooth
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := device/htc/k2_cl/bluetooth
@@ -73,6 +76,42 @@ BOARD_RECOVERYIMAGE_PARTITION_SIZE := 16776704
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 1426062336
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 1241513472
 BOARD_FLASH_BLOCK_SIZE := 512
+
+# SElinux
+BOARD_SEPOLICY_DIRS := \
+    device/htc/k2_cl/sepolicy
+
+BOARD_SEPOLICY_UNION := \
+    file_contexts \
+    property_contexts \
+    te_macros \
+    bluetooth_loader.te \
+    bridge.te \
+    camera.te \
+    conn_init.te \
+    device.te \
+    dhcp.te \
+    domain.te \
+    drmserver.te \
+    file.te \
+    kickstart.te \
+    init.te \
+    mediaserver.te \
+    mpdecision.te \
+    netmgrd.te \
+    property.te \
+    qmux.te \
+    restorecon.te \
+    rild.te \
+    rmt.te \
+    sensors.te \
+    surfaceflinger.te \
+    system.te \
+    tee.te \
+    thermald.te \
+    ueventd.te \
+    wpa_supplicant.te \
+    zygote.te
 
 # Vold
 BOARD_VOLD_EMMC_SHARES_DEV_MAJOR := true
